@@ -1,5 +1,7 @@
-package com.example.sprintpokemonchallenge
+package com.example.sprintpokemonchallenge.api
 
+import com.example.sprintpokemonchallenge.model.Pokemon
+import com.example.sprintpokemonchallenge.model.PokemonIndex
 import retrofit2.Call
 import retrofit2.http.GET
 

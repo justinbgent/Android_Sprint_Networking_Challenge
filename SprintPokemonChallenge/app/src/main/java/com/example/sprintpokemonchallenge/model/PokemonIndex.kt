@@ -1,4 +1,4 @@
-package com.example.sprintpokemonchallenge
+package com.example.sprintpokemonchallenge.model
 
 data class PokemonIndex(val count: Int, val results: List<Pokemon>)
 
