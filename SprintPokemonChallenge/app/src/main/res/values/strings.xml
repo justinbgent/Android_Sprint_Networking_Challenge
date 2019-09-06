@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SprintPokemonChallenge</string>
+    <string name="search_pokemon_id_or_name">Search Pokemon Id or Name</string>
+    <string name="my_pokemon_list">My Pokemon List</string>
 </resources>

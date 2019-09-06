@@ -23,4 +23,18 @@ object RetrofitInstance{
         return retrofit.create(PokemonApi::class.java).getPokemonIndex()
 
     }
+
+    fun getPokemon(): Call<PokemonIndex>{
+        val gson = GsonBuilder()
+            .setLenient()
+            .create()
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+
+        return retrofit.create(PokemonApi::class.java).getPokemonIndex()
+
+    }
 }
