@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.recycler_item.*
 class PokemonDetailsActivity : AppCompatActivity() {
 
     companion object{
-        lateinit var searchedPokemon: ArrayList<PokemonDetail>
+        var searchedPokemon: ArrayList<PokemonDetail> = arrayListOf()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
