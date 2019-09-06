@@ -14,7 +14,7 @@ data class AbilityDetails(val name: String/*, val url: String*/)
 
 data class Sprites(@SerializedName("front_default")val pokemonSprite: String)
 
-data class Types(val slot: Int, val type: Type)
+data class Types(val type: Type)
 
 data class Type(val name: String)
 //"front_default"

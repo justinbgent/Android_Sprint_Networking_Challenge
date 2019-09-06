@@ -1,10 +1,12 @@
-package com.example.sprintpokemonchallenge
+package com.example.sprintpokemonchallenge.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.example.sprintpokemonchallenge.R
 import com.example.sprintpokemonchallenge.model.Pokemon
+import com.example.sprintpokemonchallenge.model.PokemonDetail
 import com.example.sprintpokemonchallenge.model.PokemonIndex
 import com.example.sprintpokemonchallenge.retrofit.RetrofitInstance
 import kotlinx.android.synthetic.main.activity_main.*
@@ -15,7 +17,8 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity(), Callback<PokemonIndex> {
 
     companion object {
-        var pokemon: List<Pokemon>? = listOf()
+        var pokemonList: List<Pokemon>? = listOf()
+        lateinit var pokemonInfo: PokemonDetail
     }
 
     override fun onFailure(call: Call<PokemonIndex>, t: Throwable) {
@@ -23,10 +26,8 @@ class MainActivity : AppCompatActivity(), Callback<PokemonIndex> {
     }
 
     override fun onResponse(call: Call<PokemonIndex>, response: Response<PokemonIndex>) {
-        Log.i("IsWorking", "Yes")
         val intent = Intent(this, ListOfPokemon::class.java)
-        pokemon = response.body()?.results
-        Log.i("IsWorking", "${pokemon?.size}")
+        pokemonList = response.body()?.results
         startActivity(intent)
     }
 
@@ -35,7 +36,20 @@ class MainActivity : AppCompatActivity(), Callback<PokemonIndex> {
         setContentView(R.layout.activity_main)
 
         btn_search.setOnClickListener {
-            edit_txt.text
+            RetrofitInstance.getPokemon(edit_txt.text.toString().toLowerCase()).enqueue(object: Callback<PokemonDetail>{
+                override fun onFailure(call: Call<PokemonDetail>, t: Throwable) {
+                }
+
+                override fun onResponse(call: Call<PokemonDetail>, response: Response<PokemonDetail>) {
+                    if (response.body() != null){
+                        pokemonInfo = response.body() as PokemonDetail
+
+                        val intent = Intent(this@MainActivity, PokemonDetailsActivity::class.java)
+                        startActivity(intent)
+                    }
+                }
+            })
+
         }
 
         btn_list.setOnClickListener {

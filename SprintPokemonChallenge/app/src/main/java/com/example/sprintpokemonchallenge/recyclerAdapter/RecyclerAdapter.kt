@@ -24,9 +24,6 @@ class RecyclerAdapter(private val pokemonIndex: List<Pokemon>?): RecyclerView.Ad
         if (pokemonIndex != null){
             val pokemon = pokemonIndex[position]
             holder.name.text = pokemon.name
-            Log.i("IsWorking", "Working")
-        }else{
-            Log.i("IsWorking", "Null")
         }
 
     }
