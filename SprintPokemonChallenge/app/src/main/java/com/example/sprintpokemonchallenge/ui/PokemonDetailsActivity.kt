@@ -11,33 +11,9 @@ import kotlinx.android.synthetic.main.recycler_item.*
 
 class PokemonDetailsActivity : AppCompatActivity() {
 
-    companion object{
-        var searchedPokemon: ArrayList<PokemonDetail> = arrayListOf()
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pokemon_details)
-
-        //Logic to keep track of user's searched pokemon. Ensured repeats won't show up.
-        var addPokemonToList = true
-        if (searchedPokemon.size < 1){
-            searchedPokemon.add(pokemonInfo)
-            addPokemonToList = false
-        }
-        else {
-            for (i in searchedPokemon.indices){
-                if(searchedPokemon[i] == pokemonInfo){
-                    addPokemonToList = false
-                    break
-                }
-            }
-        }
-        if (addPokemonToList){
-            searchedPokemon.add(pokemonInfo)
-        }
-
-
 
 
         Picasso.get().load(pokemonInfo.sprites.pokemonSprite).into(image_sprite)
