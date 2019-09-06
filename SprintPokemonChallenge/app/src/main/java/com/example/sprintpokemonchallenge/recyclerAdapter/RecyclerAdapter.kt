@@ -23,7 +23,7 @@ class RecyclerAdapter(private val pokemonIndex: List<Pokemon>?): RecyclerView.Ad
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (pokemonIndex != null){
             val pokemon = pokemonIndex[position]
-            holder.name.text = "YEAH"//pokemon.name
+            holder.name.text = pokemon.name
             Log.i("IsWorking", "Working")
         }else{
             Log.i("IsWorking", "Null")
